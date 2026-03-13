@@ -1,10 +1,4 @@
-/* ============================================================
-   ALEX CHEN — PORTFOLIO STYLESHEET
-   Theme: Cyber-noir editorial
-   Fonts: Syne (display) + JetBrains Mono (body/code)
-   ============================================================ */
 
-/* ─── CSS CUSTOM PROPERTIES ─────────────────────────────── */
 :root {
   /* Colors */
   --bg:          #0a0c10;
@@ -328,7 +322,7 @@ button { cursor: none; border: none; background: none; font: inherit; }
 
 /* Background dot grid */
 .hero__grid-bg {
-  position: fixed;
+  position: absolute;
   inset: 0;
   background-image:
     radial-gradient(circle, rgba(0, 246, 255, 0.08) 1px, transparent 1px);
@@ -341,20 +335,11 @@ button { cursor: none; border: none; background: none; font: inherit; }
 .hero__orb {
   position: fixed;
   border-radius: 50%;
-  filter: blur(80px);
+  
   pointer-events: none;
   z-index: 0;
 }
-.hero__orb--1 {
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(0, 246, 255, 0.12), transparent 70%);
-  top: -100px; right: -80px;
-}
-.hero__orb--2 {
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.1), transparent 70%);
-  bottom: 0; left: -120px;
-}
+
 
 .hero__content {
   position: relative;
@@ -362,7 +347,7 @@ button { cursor: none; border: none; background: none; font: inherit; }
   display: grid;
   grid-template-columns: 1fr 380px;
   align-items: center;
-  gap: 80px;
+  width: 3000px;
 }
 
 /* Left column */
@@ -483,15 +468,16 @@ button { cursor: none; border: none; background: none; font: inherit; }
   border: 2px solid var(--border);
   position: relative;
   z-index: 1;
-  filter: grayscale(20%);
+  
   transition: filter var(--t-med);
+
 }
 .hero__img-wrapper:hover .hero__img { filter: grayscale(0%); }
 
 .hero__img-badge {
-  position: absolute;
+  position: relative;
   bottom: -18px;
-  left: 50%;
+  left: 30%;
   transform: translateX(-50%);
   z-index: 2;
   display: flex;
@@ -936,10 +922,8 @@ button { cursor: none; border: none; background: none; font: inherit; }
   .projects__grid { grid-template-columns: 1fr; }
 }
 
-/* ============================================================
-   EXPERIENCE / TIMELINE
-   ============================================================ */
-.experience {}
+
+
 
 .timeline {
   position: relative;

@@ -1,15 +1,3 @@
-/* ============================================================
-   ALEX CHEN — PORTFOLIO JAVASCRIPT
-   Features:
-     - Custom cursor tracking
-     - Sticky nav with scroll detection
-     - Mobile hamburger menu
-     - Hero typing animation
-     - Scroll-reveal animations (IntersectionObserver)
-     - Animated skill bars on enter
-     - Contact form validation
-     - Smooth internal anchor scrolling
-   ============================================================ */
 
 'use strict';
 
@@ -130,15 +118,13 @@ function initNav() {
   }
 }
 
-/* ============================================================
-   3. HERO TYPING ANIMATION
-   ============================================================ */
+
 function initTypingAnimation() {
   const el = $('#typed-text');
   if (!el) return;
 
   const phrases = [
-    'scalable APIs.',
+    'AI Models',
     'beautiful UIs.',
     'fast products.',
     'clean code.',
@@ -150,10 +136,10 @@ function initTypingAnimation() {
   let isDeleting = false;
   let timeoutId;
 
-  const TYPING_SPEED   = 80;   // ms per char when typing
-  const DELETING_SPEED = 45;   // ms per char when deleting
-  const PAUSE_END      = 1800; // pause at end of phrase
-  const PAUSE_START    = 300;  // pause before next phrase
+  const TYPING_SPEED   = 80;   
+  const DELETING_SPEED = 45;   
+  const PAUSE_END      = 1800; 
+  const PAUSE_START    = 300;  
 
   function tick() {
     const phrase = phrases[phraseIdx];
@@ -180,13 +166,11 @@ function initTypingAnimation() {
     }
   }
 
-  // Small initial delay so it doesn't fire immediately on load
+  
   timeoutId = setTimeout(tick, 700);
 }
 
-/* ============================================================
-   4. SCROLL REVEAL (IntersectionObserver)
-   ============================================================ */
+
 function initScrollReveal() {
   const targets = $$('.reveal-up, .reveal-right');
   if (!targets.length) return;
@@ -206,10 +190,7 @@ function initScrollReveal() {
   targets.forEach(el => observer.observe(el));
 }
 
-/* ============================================================
-   5. ANIMATED SKILL BARS
-   Fires when the skills section enters the viewport
-   ============================================================ */
+
 function initSkillBars() {
   const bars = $$('.skill-bar');
   if (!bars.length) return;
@@ -240,9 +221,7 @@ function initSkillBars() {
   if (skillsSection) observer.observe(skillsSection);
 }
 
-/* ============================================================
-   6. CONTACT FORM VALIDATION
-   ============================================================ */
+
 function initContactForm() {
   const form      = $('#contact-form');
   if (!form) return;
@@ -252,7 +231,7 @@ function initContactForm() {
   const submitIcon = $('#submit-icon');
   const successEl  = $('#form-success');
 
-  /* Field refs */
+
   const fields = {
     name:    { input: $('#name'),    error: $('#error-name'),    group: $('#group-name') },
     email:   { input: $('#email'),   error: $('#error-email'),   group: $('#group-email') },
@@ -260,7 +239,6 @@ function initContactForm() {
     message: { input: $('#message'), error: $('#error-message'), group: $('#group-message') },
   };
 
-  /* Validators */
   const validators = {
     name:    v => v.trim().length >= 2 ? '' : 'Please enter your name (min 2 characters).',
     email:   v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Please enter a valid email address.',
