@@ -347,7 +347,9 @@ button { cursor: none; border: none; background: none; font: inherit; }
   display: grid;
   grid-template-columns: 1fr 380px;
   align-items: center;
-  width: 3000px;
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
 }
 
 /* Left column */
