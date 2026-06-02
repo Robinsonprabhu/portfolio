@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initSmoothScroll();
   initActiveNavHighlight();
+  initScrollProgress();
+  init3DTilt();
+  initInteractiveGlow();
 
 });
 
@@ -370,3 +373,64 @@ function initActiveNavHighlight() {
     alert('📄 In a real portfolio, this would download your resume PDF. Add your resume file and update the href attribute!');
   });
 })();
+
+/* ============================================================
+   10. SCROLL PROGRESS
+   ============================================================ */
+function initScrollProgress() {
+  const progressBar = $('#scroll-progress');
+  if (!progressBar) return;
+
+  window.addEventListener('scroll', () => {
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (totalHeight <= 0) return;
+    const percentage = (window.scrollY / totalHeight) * 100;
+    progressBar.style.width = percentage + '%';
+  }, { passive: true });
+}
+
+/* ============================================================
+   11. 3D IMAGE TILT
+   ============================================================ */
+function init3DTilt() {
+  const wrapper = $('.hero__img-wrapper');
+  const img = $('.hero__img');
+  if (!wrapper || !img) return;
+
+  wrapper.addEventListener('mousemove', (e) => {
+    const rect = wrapper.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const xc = rect.width / 2;
+    const yc = rect.height / 2;
+
+    const angleX = -(y - yc) / yc * 15;
+    const angleY = (x - xc) / xc * 15;
+
+    img.style.setProperty('--rx', `${angleX}deg`);
+    img.style.setProperty('--ry', `${angleY}deg`);
+  });
+
+  wrapper.addEventListener('mouseleave', () => {
+    img.style.setProperty('--rx', '0deg');
+    img.style.setProperty('--ry', '0deg');
+  });
+}
+
+/* ============================================================
+   12. INTERACTIVE SPOTLIGHT GLOW
+   ============================================================ */
+function initInteractiveGlow() {
+  const cards = $$('.glass-card, .skill-category, .about__code-card');
+
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mx', `${x}px`);
+      card.style.setProperty('--my', `${y}px`);
+    });
+  });
+}
